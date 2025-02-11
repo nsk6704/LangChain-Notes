@@ -1,0 +1,65 @@
+# Components of LangChain
+
+### 1. Models
+
+These are core interfaces through which we interact with AI models.
+Primarily, they are of two kinds:
+
+1. **Language Models**: Here, both the inputs and outputs are in the form of text.
+2. **Embedding Models**: These models take in text as input and output a vector, which can then be used for purposes such as semantic search.
+
+We can get to see the models available, along with their features, by visiting: 
+
+- https://python.langchain.com/docs/integrations/chat/#all-chat-models
+- https://python.langchain.com/docs/integrations/text_embedding/
+
+### 2. Prompts
+
+These are the inputs provided to the LLM. We can create a variety of prompts using LangChain. Some of them are:
+
+1. **Dynamic and Reusable Prompts**: By providing attributes such as topic name and emotion type for a prompt such as ‘Summarize {topic} in {emotion} tone’
+2. **Role-based Prompts:** As the name suggests, attributes such as whether the user is a general user or a system user can be given which changes the output of the LLM.
+3. **Few Shot Prompting:**  In this kind of prompting, examples are provided for the LLM to understand the manner of input and the corresponding output.  
+
+### 3. Chains
+
+This component is at the heart of LangChain. They are used to build pipelines which do the heavy lifting behind the scenes.
+
+The output of one component automatically becomes the input for the next without the need to set it up manually.
+
+Some of the kinds of chains are Parallel, for example in the case wherein multiple LLMs are used, and Conditional which are self explanatory.
+
+### 4. Indexes
+
+These connect your applications to external knowledge - such as PDFs, websites or databases.
+
+1. Doc Loader
+2. Text Splitter
+3. Vector Stores
+4. Retrievers
+
+### 5. Memory
+
+LLM API calls are stateless. Each call has no memory or context of the previous response(s). The memory feature is used to solve this particular issue.
+
+Some of the memory types are:
+
+- ConversationBufferMemory : Stores a transcript of recent messages, but can grow large quickly.
+- ConversationBufferWindowMemory: Only keeps last N interactions.
+- Summariser-Based Memory: Periodically summarizes older chat segments to keep a condensed memory footprint.
+- Custom Memory: For advanced use cases.
+
+### 6. Agents
+
+Initially, because of the inherent NLU and NLG capabilities, the most popular application was a Chat Bot.
+
+Now, an Agent is an extension of a chatbot which has access to certain ‘Tools’ which are used to perform actions by ‘reasoning’.
+
+Here's how an LLM agent works with tools:
+
+- Given tools: Calculator and Weather API
+- Example user question: "Can you multiply today's temperature in Delhi by 3?"
+- Agent's steps:
+    - Checks Weather API to get current temperature
+    - Uses calculator tool to multiply the temperature by 3
+    - Returns the final calculated result
